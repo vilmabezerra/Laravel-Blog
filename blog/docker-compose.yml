@@ -1,0 +1,34 @@
+# v2 syntax
+version: '2'
+
+# Named volumes
+volumes:
+  # MySQL Data
+  app-vilma-mysql-data:
+    driver: local
+
+services:
+  # MySQL (5.7)
+  mysql:
+    image: ambientum/mysql:5.7
+    command: --max_allowed_packet=9932505856
+    container_name: app-vilma-mysql
+    volumes:
+      - app-vilma-mysql-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret12
+      - MYSQL_DATABASE=blog
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=secret12
+  # PHP
+  app:
+    image: ambientum/php:7.2-nginx
+    container_name: app-vilma-app
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "9001:8080"
+    links:
+      - mysql:mysql
