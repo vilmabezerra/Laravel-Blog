@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-                                
-                                    <nav class="pagination" style="position: relative">
+                                <div class="content has-text-centered">
+                                    <nav class="pagination" >
 
                                         <ul class="pagination-list">
                                             {{-- Pagination Elements --}}
@@ -20,9 +20,16 @@
                                                 </div>
                                                 </li>
                                             @endforeach
-                                        </ul>
 
-                                        <p style="position: fixed; bottom: 0; width:100%; text-align: center">
+                                        </ul>
+                                        
+                                    </nav>
+                                    
+                                </div>
+                                <hr/>
+                                 <p class="row">
+                                    <div class="columns is-vcentered">
+                                        <div class="column is-3"></div>
                                         @if ($paginator->onFirstPage())
                                             <a class="pagination-previous" disabled>Previous</a>
                                         @else
@@ -34,7 +41,7 @@
                                         @else
                                             <a class="pagination-next" disabled>Next page</a>
                                         @endif
-                                        </p>
-                                    </nav>
+                                    </div>
+                                    </p>
                                
 @endsection

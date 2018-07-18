@@ -85,8 +85,8 @@
                 <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="columns is-vcentered">
-                        <div class="column is-1"></div>
-                        <div class="column is-9">
+                        <div class="column is-3"></div>
+                        <div class="column is-7">
                             <div class="content">
                                 <?php echo $__env->yieldContent('content'); ?>
                             </div>

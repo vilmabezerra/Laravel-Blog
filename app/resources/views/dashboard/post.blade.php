@@ -31,7 +31,7 @@
 
                                         <!--Creation date and Body-->
                                         <p class="blog-post-meta"> 
-                                             {{$element->created_at->toFormattedDateString()}}
+                                             em {{$element->created_at->toFormattedDateString()}}
                                         </p>
                                         <p>
                                             {{ $element->description }}
@@ -39,7 +39,9 @@
 
                                         <!-- Edit and Delete Buttons -->
                                         <p>
-                                            <a href="post/edit" class="btn btn-primary">Editar</a>
+                                            <a href="post/{{$element->id}}/edit" class="btn btn-primary">Editar</a>
+
+
                                             {{ Form::open(['method' => 'delete', 'route' => ['post.destroy', $element->id]]) }}
                                                 {{ Form::hidden('id', $element->id) }}
                                                 {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}

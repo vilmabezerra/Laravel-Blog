@@ -1,7 +1,6 @@
 <?php $__env->startSection('content'); ?>
-                                
-                                
-                                    <nav class="pagination" style="position: relative">
+                                <div class="content has-text-centered">
+                                    <nav class="pagination" >
 
                                         <ul class="pagination-list">
                                             
@@ -21,9 +20,16 @@
                                                 </div>
                                                 </li>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </ul>
 
-                                        <p style="position: fixed; bottom: 0; width:100%; text-align: center">
+                                        </ul>
+                                        
+                                    </nav>
+                                    
+                                </div>
+                                <hr/>
+                                 <p class="row">
+                                    <div class="columns is-vcentered">
+                                        <div class="column is-3"></div>
                                         <?php if($paginator->onFirstPage()): ?>
                                             <a class="pagination-previous" disabled>Previous</a>
                                         <?php else: ?>
@@ -35,10 +41,9 @@
                                         <?php else: ?>
                                             <a class="pagination-next" disabled>Next page</a>
                                         <?php endif; ?>
-                                        </p>
-                                    </nav>
+                                    </div>
+                                    </p>
                                
-
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

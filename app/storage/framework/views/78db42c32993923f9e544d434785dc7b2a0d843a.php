@@ -31,7 +31,7 @@
 
                                         <!--Creation date and Body-->
                                         <p class="blog-post-meta"> 
-                                             <?php echo e($element->created_at->toFormattedDateString()); ?>
+                                             em <?php echo e($element->created_at->toFormattedDateString()); ?>
 
                                         </p>
                                         <p>
@@ -41,7 +41,9 @@
 
                                         <!-- Edit and Delete Buttons -->
                                         <p>
-                                            <a href="post/edit" class="btn btn-primary">Editar</a>
+                                            <a href="post/<?php echo e($element->id); ?>/edit" class="btn btn-primary">Editar</a>
+
+
                                             <?php echo e(Form::open(['method' => 'delete', 'route' => ['post.destroy', $element->id]])); ?>
 
                                                 <?php echo e(Form::hidden('id', $element->id)); ?>
