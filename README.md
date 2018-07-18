@@ -11,10 +11,10 @@ Then, I could finally get to actually learn Laravel and follow as planned with t
 
 ### First one: CRUD
 
-- Add CRUD functions
-  - Read function with pagination (I've used Bulma, since Vue.js would require more time to learn this specific framework)
-  - Create, Update and Delete functions (User can do them when logged, and changes can be applied only to his own posts)
-  - Unit Test (Post's title)
+- [x] Add CRUD functions 
+  - [x] Read function with pagination (I've used Bulma, since Vue.js would require more time to learn this specific framework)
+  - [x] Create, Update and Delete functions (User can do them when logged, and changes can be applied only to his own posts)
+  - [x] Unit Test (Post's title)
 
 ### Second one: Users
 - Register Users
