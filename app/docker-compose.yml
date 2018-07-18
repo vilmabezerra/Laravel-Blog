@@ -1,0 +1,67 @@
+# v2 syntax
+version: '2'
+
+# Named volumes
+volumes:
+  # MySQL Data
+  app-r-mysql-data:
+    driver: local
+  # Redis Data
+  # app-r-redis-data:
+  #   driver: local
+
+services:
+  # MySQL (5.7)
+  mysql:
+    image: ambientum/mysql:5.7
+    command: --max_allowed_packet=9932505856
+    container_name: app-r-mysql
+    volumes:
+      - app-r-mysql-data:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=app-r
+      - MYSQL_DATABASE=app-r
+      - MYSQL_USER=app-r
+      - MYSQL_PASSWORD=app-r
+# # Redis
+#   cache:
+#     image: redis:4.0
+#     container_name: app-r-redis
+#     command: --appendonly yes
+#     volumes:
+#       - app-r-redis-data:/data
+#     ports:
+#       - "6379:6379"
+  # PHP
+  app:
+    mem_limit: 1000000000
+    memswap_limit: 2000000000
+    # mem_reservation: 512m
+    image: ambientum/php:7.2-nginx
+    container_name: app-r-app
+    # command: echo memory_limit = 2048M >> /etc/php7/php.ini
+    # command:  php artisan queue:work --queue=low,high,default --tries=3
+    # command: ls /usr/local/etc/
+    
+    # command: ls /etc/php7/
+    volumes:
+      - .:/var/www/app
+      # - ./php7/php.ini:/etc/php7/php.ini
+    ports:
+      - "9002:8080"
+    links:
+      - mysql
+      # - cache
+  # # Laravel Queues
+  # queue:
+  #   image: ambientum/php:7.2
+  #   container_name: app-r-queue
+  #   command: php artisan queue:work --queue=low,high,default --tries=3
+  #   volumes:
+  #     - .:/var/www/app
+  #   links:
+  #     - mysql
+  #     - cache
+
