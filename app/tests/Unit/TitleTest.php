@@ -4,8 +4,9 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\TestResponse;
 
-class ExampleTest extends TestCase
+class TitleTest extends TestCase
 {
     /**
      * A basic test example.
@@ -14,10 +15,26 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function tryToAddBigTitleTest()
+    public function testAddingBigTitleTest()
     {
+
     	$response = $this->call('POST', '/post/create', ['title' => 'Sally is a crazy girl', 'description' => 'But everybody likes her']);
         
-        $this->assertNotEquals(302, $response->getStatusCode());
+        //$this->assertViewHas('Falha');
+        //$response->assertSessionHasErrors();
+        //$this->assertNotEquals(302, $response->getStatusCode());
+
+        //$errors = session('error');
+        $response->assertSessionMissing('success');
+        //$response->assertSessionHas('error');
+        //$this->assertEquals($errors->get('name')[0],"Falha ao criar postagem");
     }
+    
+    public function testWelcomeView()
+    {
+        $response = $this->call('GET', '/');
+        $response->assertViewHas('paginator');
+    }
+
+    
 }

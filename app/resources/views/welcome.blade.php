@@ -13,7 +13,7 @@
                                                 <div class="blog-post">
                                                     <h3 class="blog-post-title">{{ $element->title }}</h3>
                                                     <p class="blog-post-meta"> 
-                                                       em {{$element->created_at->toFormattedDateString()}}
+                                                       em {{$element->created_at->toFormattedDateString()}} por {{ $element->user->name }}
                                                     </p>
                                                     <p>
                                                         {{ $element->description }}

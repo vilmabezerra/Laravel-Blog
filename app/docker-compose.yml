@@ -37,6 +37,7 @@ services:
 #       - "6379:6379"
   # PHP
   web:
+    env_file: .env
     mem_limit: 1000000000
     memswap_limit: 2000000000
     # mem_reservation: 512m

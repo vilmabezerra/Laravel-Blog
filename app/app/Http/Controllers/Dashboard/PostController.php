@@ -21,8 +21,8 @@ class PostController extends Controller
     public function index()
     {
         $userid = Auth::user()->id;
-        $posts = Post::where("ownerid", "=", $userid)->get();
-        $counter = Post::where("ownerid", "=", $userid)->count();
+        $posts = Post::where("user_id", "=", $userid)->get();
+        $counter = Post::where("user_id", "=", $userid)->count();
 
         return view('dashboard/post', ['posts' => $posts, 'counter' => $counter]);
         
@@ -46,16 +46,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //To Validate title with 20 characters and without prohibited word (test)
+        //To Validate title with 20 characters, which is the DB column size, and without prohibited word (teste)
         try{
             $input = $request->all();
             $slug = $this->url_slug($input['title'], ['transliterate' => true]);
             $post = new Post;
-            $post->ownerid = Auth::user()->id;
+            $post->user_id = Auth::user()->id;
 
+            //Validating 
             $needle = 'teste';
             if (stripos($input['title'], $needle) !== false){
-                throw new Exception('Contém teste no título');
+                throw new Exception('Contém a palavra teste no título');
             }
          
             $post->title = $input['title'];    

@@ -11,7 +11,7 @@
                                                 <div class="blog-post">
                                                     <h3 class="blog-post-title"><?php echo e($element->title); ?></h3>
                                                     <p class="blog-post-meta"> 
-                                                       em <?php echo e($element->created_at->toFormattedDateString()); ?>
+                                                       em <?php echo e($element->created_at->toFormattedDateString()); ?> por <?php echo e($element->user->name); ?>
 
                                                     </p>
                                                     <p>
