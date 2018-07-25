@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+<!-- Welcome page contain Pagination of all the published posts -->
+
 @section('content')
                                 <div class="content has-text-centered">
                                     <nav class="pagination" >
@@ -26,8 +28,10 @@
                                     </nav>
                                     
                                 </div>
+
                                 <hr/>
-                                 <p class="row">
+
+                                <p class="row">
                                     <div class="columns is-vcentered">
                                         <div class="column is-3"></div>
                                         @if ($paginator->onFirstPage())
@@ -42,6 +46,6 @@
                                             <a class="pagination-next" disabled>Next page</a>
                                         @endif
                                     </div>
-                                    </p>
+                                </p>
                                
 @endsection

@@ -35,6 +35,7 @@
 <body>
     <div id="app">
         <section class="hero is-fullheight is-default is-bold">
+            <!-- Layout's head -->
                 <div class="hero-head">
                     <nav class="navbar">
                         <div class="container">
@@ -50,6 +51,7 @@
                             </div>
                             <div id="navbarMenu" class="navbar-menu">
                                 <div class="navbar-end">
+                                    <!-- When user is logged Home and Logout buttons should be shown -->
                                     <div class="tabs is-right">
                                         <ul>
                                             @if (Route::has('login'))
@@ -58,19 +60,25 @@
                                                         <a style="text-decoration : none" href="{{ url('/home') }}">Home</a>
                                                     </li>
                                                     <li>
-                                                                <a  style="text-decoration : none" href="{{ route('logout') }}"
-                                                                onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
-                                                                {{ __('Logout') }}
-                                                                </a>
+                                                        
+                                                        <a style="text-decoration : none" href="{{ route('logout') }}"
+                                                           onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();">
+                                                            {{ __('Logout') }}
+                                                        </a>
+
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                            @csrf
+                                                        </form>
+
                                                     </li>
-                                                    
+                                    <!-- When user is not logged Login and Register buttons should be shown -->
                                                     @else
                                                     <li>
                                                         <a style="text-decoration : none" href="{{ route('login') }}">Login</a>
                                                     </li>
                                                     <li>
-                                                        <a style="text-decoration : none" href="{{ route('register') }}">Register</a>
+                                                        <a style="text-decoration : none" href="{{ route('register') }}">Cadastrar-se</a>
                                                     </li>
                                                     @endauth
                                             @endif
@@ -81,6 +89,8 @@
                         </div>
                     </nav>
                 </div>
+
+                <!-- Layout's body -->
                 <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="columns is-vcentered">

@@ -1,3 +1,5 @@
+<!-- Welcome page contain Pagination of all the published posts -->
+
 <?php $__env->startSection('content'); ?>
                                 <div class="content has-text-centered">
                                     <nav class="pagination" >
@@ -26,8 +28,10 @@
                                     </nav>
                                     
                                 </div>
+
                                 <hr/>
-                                 <p class="row">
+
+                                <p class="row">
                                     <div class="columns is-vcentered">
                                         <div class="column is-3"></div>
                                         <?php if($paginator->onFirstPage()): ?>
@@ -42,7 +46,7 @@
                                             <a class="pagination-next" disabled>Next page</a>
                                         <?php endif; ?>
                                     </div>
-                                    </p>
+                                </p>
                                
 <?php $__env->stopSection(); ?>
 

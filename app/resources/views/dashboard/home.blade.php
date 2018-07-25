@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+<!-- Home page - available to logged users only-->
 @section('content')
 
             <div class="card">

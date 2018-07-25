@@ -11,6 +11,7 @@ volumes:
   #   driver: local
 
 services:
+
   # MySQL (5.7)
   mysql:
     image: ambientum/mysql:5.7
@@ -35,7 +36,7 @@ services:
 #     ports:
 #       - "6379:6379"
   # PHP
-  app:
+  web:
     mem_limit: 1000000000
     memswap_limit: 2000000000
     # mem_reservation: 512m

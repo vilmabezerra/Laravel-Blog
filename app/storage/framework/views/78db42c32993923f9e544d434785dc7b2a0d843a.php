@@ -1,3 +1,4 @@
+<!-- User's Posts page, where she can see, edit and delete all of her posts -->
 <?php $__env->startSection('content'); ?>
             <div class="card">
                 <div class="card-header">Minhas Postagens</div>
@@ -48,7 +49,7 @@
 
                                                 <?php echo e(Form::hidden('id', $element->id)); ?>
 
-                                                <?php echo e(Form::submit('Delete', ['class' => 'btn btn-danger'])); ?>
+                                                <?php echo e(Form::submit('Deletar', ['class' => 'btn btn-danger'])); ?>
 
                                             <?php echo e(Form::close()); ?>
 

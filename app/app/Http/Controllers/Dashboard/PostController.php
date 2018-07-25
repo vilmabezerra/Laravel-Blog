@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Exception;
 
 class PostController extends Controller
 {
@@ -45,25 +46,36 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //To Validate title with 20 characters
+        //To Validate title with 20 characters and without prohibited word (test)
         try{
             $input = $request->all();
             $slug = $this->url_slug($input['title'], ['transliterate' => true]);
             $post = new Post;
             $post->ownerid = Auth::user()->id;
-            $post->title = $input['title'];
+
+            $needle = 'teste';
+            if (stripos($input['title'], $needle) !== false){
+                throw new Exception('Contém teste no título');
+            }
+         
+            $post->title = $input['title'];    
             $post->slug = $slug;
             $post->description =  $input['description'];
             $post->save();
             return redirect()
             ->back()
-            ->with('success', 'Sucesso ao criar postagem')
+            ->with('success', 'Sucesso ao criar postagem ')
             ->withInput();
         }catch(QueryException $e){
 
             return redirect()
             ->back()
             ->with('error', 'Falha ao criar postagem')
+            ->withInput();
+        }catch(Exception $e){
+            return redirect()
+            ->back()
+            ->with('error', 'Falha ao criar postagem: '.$e->getMessage())
             ->withInput();
         }
     }

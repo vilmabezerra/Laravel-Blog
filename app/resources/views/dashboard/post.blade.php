@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+<!-- User's Posts page, where she can see, edit and delete all of her posts -->
 @section('content')
             <div class="card">
                 <div class="card-header">Minhas Postagens</div>
@@ -44,7 +45,7 @@
 
                                             {{ Form::open(['method' => 'delete', 'route' => ['post.destroy', $element->id]]) }}
                                                 {{ Form::hidden('id', $element->id) }}
-                                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                                {{ Form::submit('Deletar', ['class' => 'btn btn-danger']) }}
                                             {{ Form::close() }}
 
                                         </p>

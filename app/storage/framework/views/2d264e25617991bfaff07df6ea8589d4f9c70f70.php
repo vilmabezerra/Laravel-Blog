@@ -1,3 +1,4 @@
+<!-- Home page - available to logged users only-->
 <?php $__env->startSection('content'); ?>
 
             <div class="card">

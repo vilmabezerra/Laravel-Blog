@@ -35,6 +35,7 @@
 <body>
     <div id="app">
         <section class="hero is-fullheight is-default is-bold">
+            <!-- Layout's head -->
                 <div class="hero-head">
                     <nav class="navbar">
                         <div class="container">
@@ -50,6 +51,7 @@
                             </div>
                             <div id="navbarMenu" class="navbar-menu">
                                 <div class="navbar-end">
+                                    <!-- When user is logged Home and Logout buttons should be shown -->
                                     <div class="tabs is-right">
                                         <ul>
                                             <?php if(Route::has('login')): ?>
@@ -58,20 +60,26 @@
                                                         <a style="text-decoration : none" href="<?php echo e(url('/home')); ?>">Home</a>
                                                     </li>
                                                     <li>
-                                                                <a  style="text-decoration : none" href="<?php echo e(route('logout')); ?>"
-                                                                onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
-                                                                <?php echo e(__('Logout')); ?>
+                                                        
+                                                        <a style="text-decoration : none" href="<?php echo e(route('logout')); ?>"
+                                                           onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();">
+                                                            <?php echo e(__('Logout')); ?>
 
-                                                                </a>
+                                                        </a>
+
+                                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                                            <?php echo csrf_field(); ?>
+                                                        </form>
+
                                                     </li>
-                                                    
+                                    <!-- When user is not logged Login and Register buttons should be shown -->
                                                     <?php else: ?>
                                                     <li>
                                                         <a style="text-decoration : none" href="<?php echo e(route('login')); ?>">Login</a>
                                                     </li>
                                                     <li>
-                                                        <a style="text-decoration : none" href="<?php echo e(route('register')); ?>">Register</a>
+                                                        <a style="text-decoration : none" href="<?php echo e(route('register')); ?>">Cadastrar-se</a>
                                                     </li>
                                                     <?php endif; ?>
                                             <?php endif; ?>
@@ -82,6 +90,8 @@
                         </div>
                     </nav>
                 </div>
+
+                <!-- Layout's body -->
                 <div class="hero-body">
                 <div class="container has-text-centered">
                     <div class="columns is-vcentered">
